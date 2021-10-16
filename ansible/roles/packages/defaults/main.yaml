@@ -1,0 +1,5 @@
+---
+containerd_flatcar_bins:
+  - ctr
+  - containerd
+  - containerd-shim

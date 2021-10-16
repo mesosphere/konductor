@@ -1,0 +1,20 @@
+containerd_version: "1.4.3"
+containerd_sha256: "2697a342e3477c211ab48313e259fd7e32ad1f5ded19320e6a559f50a82bff3d"
+
+ansible_python_interpreter: /opt/bin/python
+python_path: /opt/bin/builder-env/site-packages
+containerd_cri_socket: /run/docker/libcontainerd/docker-containerd.sock
+
+sysusr_prefix: /opt
+sysusrlocal_prefix: /opt
+systemd_prefix: /etc/systemd
+
+containerd_flatcar_bins:
+  - ctr
+  - containerd
+  - containerd-shim
+
+nvidia_driver_version: "460.73.01"
+nvidia_container_runtime_version: "3.5.0"
+nvidia_container_toolkit_version: "1.5.1"
+libnvidia_container_version: "1.5.0"

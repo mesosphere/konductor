@@ -1,0 +1,15 @@
+{
+    "version": "1.0.0",
+    "hook": {
+        "path": "/opt/bin/nvidia-container-toolkit",
+        "args": ["nvidia-container-toolkit", "prestart"],
+        "env": [
+            "PATH=/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        ]
+    },
+    "when": {
+        "always": true,
+	"commands": [".*"]
+    },
+    "stages": ["prestart"]
+}

@@ -1,0 +1,2 @@
+#!/bin/sh
+PATH="/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" exec /opt/bin/nvidia-container-toolkit "$@"

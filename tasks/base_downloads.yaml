@@ -1,0 +1,23 @@
+- name: mkdir_konductor
+  file:
+    path: "{{ ansible_user_dir }}/konductor"
+    state: directory
+
+- name: download_inventory
+  aws_s3:
+    bucket: konductor
+    object: inventory.yaml
+    dest: "{{ ansible_user_dir }}/konductor"
+    mode: get 
+
+- name: download_archive
+  aws_s3:
+    bucket: konductor
+    object: koch_poc_ansible.tar.gz
+    dest: "{{ ansible_user_dir }}/konductor"
+    mode: get 
+
+- name:
+  unarchive:
+    src: "{{ ansible_user_dir }}/konductor/koch_poc_ansible.tar.gz"
+    dest: "{{ ansible_user_dir }}/konductor"
