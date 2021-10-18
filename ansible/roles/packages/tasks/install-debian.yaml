@@ -84,6 +84,7 @@
     apt:
       name: nfs-common
       state: present
+      update_cache: yes
     register: nfs_common_installation_deb
     until: nfs_common_installation_deb is success
     retries: 3
