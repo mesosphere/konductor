@@ -3,7 +3,7 @@ containerd_cri_socket: /run/containerd/containerd.sock
 containerd_sha256: 3ef2cc781be6e9c06ba405ddd630ac91a3f32858117a040f66110407bb82d83a
 containerd_url: https://github.com/containerd/containerd/releases/download/v{{ containerd_version
   }}/cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz
-containerd_version: 1.4.7
+containerd_version: 1.4.11
 coredns_version: 1.8.0
 crictl_sha256: 44d5f550ef3f41f9b53155906e0229ffdbee4b19452b4df540265e29572b899c
 crictl_url: https://github.com/kubernetes-sigs/cri-tools/releases/download/v{{ crictl_version
