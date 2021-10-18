@@ -34,7 +34,7 @@ docker_deb_component: "main"
 
 kubernetes_full_version: "{{ kubernetes_version }}{{ kubernetes_build_meta }}"
 package_versions:
-  enable_repository_installation: "{{ (spec.osPackages.enableAdditionalRepositories if spec.osPackages is defined else true)|default(true)|bool }}"
+  enable_repository_installation: "{{ (spec.osPackages.enableAdditionalRepositories if (spec is defined and spec.osPackages is defined) else true)|default(true)|bool }}"
   # the version may contain d2iq specific suffix, remove it when downloading packages
   kubernetes_rpm: "{{ kubernetes_version }}-0"
   kubernetes_deb: "{{ kubernetes_version }}-00"
