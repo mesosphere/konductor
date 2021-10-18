@@ -30,39 +30,39 @@
 
 # Some OS might disable cloud-final service on boot (rhel 7).
 # Enable all cloud-init services on boot.
-- name: Make sure all cloud init services are enabled
-  service:
-    name: "{{ item }}"
-    enabled: yes
-  with_items:
-    - cloud-final
-    - cloud-config
-    - cloud-init
-    - cloud-init-local
-  when: ansible_os_family != "Flatcar"
+#- name: Make sure all cloud init services are enabled
+# service:
+#   name: "{{ item }}"
+#   enabled: yes
+# with_items:
+#   - cloud-final
+#   - cloud-config
+#   - cloud-init
+#   - cloud-init-local
+# when: ansible_os_family != "Flatcar"
 
-- name: Create cloud-init config file
-  copy:
-    src: files/etc/cloud/cloud.cfg.d/05_logging.cfg
-    dest: /etc/cloud/cloud.cfg.d/05_logging.cfg
-    owner: root
-    group: root
-    mode: 0644
-  when: ansible_os_family != "Flatcar"
+#- name: Create cloud-init config file
+# copy:
+#   src: files/etc/cloud/cloud.cfg.d/05_logging.cfg
+#   dest: /etc/cloud/cloud.cfg.d/05_logging.cfg
+#   owner: root
+#   group: root
+#   mode: 0644
+# when: ansible_os_family != "Flatcar"
 
-- name: get cloud_init version
-  register: cloud_init_version
-  shell: cloud-init --version | awk '{print $2}' | cut -d- -f1
-  when: ansible_os_family !=  "Flatcar"
+#- name: get cloud_init version
+# register: cloud_init_version
+# shell: cloud-init --version | awk '{print $2}' | cut -d- -f1
+# when: ansible_os_family !=  "Flatcar"
 
-- name: set cloudinit feature flags
-  copy:
-    src: usr/lib/python3/dist-packages/cloudinit/feature_overrides.py
-    dest: "{{ sysusr_prefix }}/lib/python3/dist-packages/cloudinit/feature_overrides.py"
-    owner: root
-    group: root
-    mode: 0644
-  when: ansible_os_family == "Debian" and  cloud_init_version.stdout  | float > 20.0
+#- name: set cloudinit feature flags
+# copy:
+#   src: usr/lib/python3/dist-packages/cloudinit/feature_overrides.py
+#   dest: "{{ sysusr_prefix }}/lib/python3/dist-packages/cloudinit/feature_overrides.py"
+#   owner: root
+#   group: root
+#   mode: 0644
+# when: ansible_os_family == "Debian" and  cloud_init_version.stdout  | float > 20.0
 
 - name: get python3 location for non-debian
   register: python3_version
